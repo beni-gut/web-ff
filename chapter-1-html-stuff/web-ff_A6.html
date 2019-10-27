@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Tabelle</title>
+	<style>
+		table {
+			border-collapse: collapse;
+		}
+		td, th {
+			border: 1px solid black;
+			padding: .4em;
+		}
+		th {
+			padding-left: 1em;
+			padding-right: 1em;
+		}
+		th.empty {
+			border: 0px;
+		}
+		td {
+			text-align: center;
+		}
+		caption {
+			caption-side: bottom;
+		}
+	</style>
+
+</head>
+
+<body>
+	<table>
+		<caption>Essverhalten</caption>
+		<tr>
+			<th class="empty" colspan="2"></th>
+			<th colspan="2" scope="col">Präferenzen</th>
+		</tr>
+		<tr>
+			<th class="empty" colspan="2"></th>
+			<th scope="col">Fleisch</th>
+			<th scope="col">Vegetarisch</th>
+		</tr>
+		<tr>
+			<th rowspan="2">Geschlecht</th>
+			<th>m</th>
+			<td>73%</td>
+			<td>27%</td>
+		</tr>
+		<tr>
+			<th>w</th>
+			<td>16%</td>
+			<td>84%</td>
+		</tr>
+	</table>
+</body>
+</html>

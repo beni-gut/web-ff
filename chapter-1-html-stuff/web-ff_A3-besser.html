@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Dokumentenstruktur</title>
+	<style>
+		ol {
+			list-style-type: none;
+			counter-reset: item;
+			margin: 0;
+			padding: 0;
+		}
+
+		ol > li {
+			display: table;
+			counter-increment: item;
+		}
+
+		ol > li:before {
+			content: counters(item, ".") ". ";
+			display: table-cell;
+			padding-right: 0.6em;
+		}
+
+		li ol > li {
+			margin: 0;
+		}
+
+		li ol > li:before {
+			content: counters(item, ".") " ";
+		}
+	</style>
+
+</head>
+
+<body>
+	<header>
+		<h1>Dokumentenstruktur</h1>
+	</header>
+
+	<a href="web-ff_A1.html">Zum "Hello World" Dokument</a>
+
+	<ol>
+		<li>
+			<h2>1</h2>
+			<ol>
+				<li>
+					<h3>1.1</h3>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur in nunc diam. Nam nulla turpis, consequat a nibh at, feugiat hendrerit lectus. Proin vestibulum, augue pretium posuere volutpat, tellus est fringilla urna, vel ullamcorper turpis lectus eget erat. Praesent eu enim faucibus, scelerisque lacus vel, volutpat libero. Nulla vel lobortis ipsum, eu consequat diam. Nulla at rhoncus <a href="#li-kapitel-3">Kapitel 3</a> lorem, ac maximus dolor. Morbi ac iaculis ligula. Quisque ut eros sit amet nisi suscipit pharetra. Integer scelerisque, turpis ac scelerisque ultrices, ligula nulla tincidunt diam, et aliquet ante felis sed ex.</p>
+				</li>
+				<li id="li-kapitel-1-2">
+					<h3>1.2</h3>
+					<ol>
+						<li id="li-kapitel-1-2-1">
+							<h4>1.2.1</h4>
+							<p>Morbi faucibus cursus massa. Sed auctor varius elit sit amet mattis. Nam tellus tortor, faucibus sit amet tortor ac, scelerisque vehicula risus. Sed ac laoreet quam. In hac habitasse platea dictumst. Donec vel felis ac est auctor volutpat id in est. Donec ut augue sed nibh sagittis maximus at et neque. Donec ut magna sed mi consequat aliquam eget in neque. Sed dictum nec quam vel elementum. Aliquam nibh nulla, laoreet quis faucibus sit amet, suscipit at massa. Sed dolor lacus, accumsan vel convallis at, ultrices eget dolor. Phasellus id mattis urna. Ut laoreet ut justo eget lobortis.</p>
+						</li>
+						<li>
+							<h4>1.2.2</h4>
+							<p>Maecenas auctor cursus commodo. Duis ut turpis mauris. Mauris sapien ex, imperdiet ac dictum vitae, pretium a tellus. Vestibulum bibendum quis sem eu laoreet. In cursus, leo et porttitor tincidunt, mi lorem porta eros, in hendrerit massa ante non justo. Suspendisse in turpis erat. Sed dictum eros non convallis hendrerit. Praesent venenatis metus gravida pellentesque dignissim. Phasellus tincidunt porta justo sed laoreet. Vivamus sed scelerisque ante, a imperdiet mauris.</p>
+						</li>
+					</ol>
+				</li>
+				<li>
+					<h3>1.3</h3>
+					<p>Sed sit amet mauris eu ex convallis hendrerit ut feugiat quam. Cras condimentum purus id mi molestie, vitae sollicitudin erat laoreet. Curabitur urna mauris, lacinia bibendum posuere id, mollis vitae urna. Mauris vestibulum euismod lectus, sit amet laoreet nunc imperdiet id. Curabitur mollis, mi a sagittis ultricies, elit arcu suscipit erat, eget consectetur ex ligula sit amet est. Aliquam at turpis at felis tincidunt aliquet. Vestibulum gravida dolor vel quam posuere lacinia. Phasellus non laoreet arcu. Sed pellentesque libero ac turpis sagittis pulvinar.</p>
+				</li>
+			</ol>
+		</li>
+		<li>
+			<h2>2</h2>
+			<ol>
+				<li>
+					<h3>2.1</h3>
+					<ol>
+						<li>
+							<h4>2.1.1</h4>
+							<a href="#li-kapitel-1-2">Kapitel 1.2</a>
+							<ol>
+								<li>
+									<h5>2.1.1.1</h5>
+									<p>Nam et leo at mauris rutrum congue. Donec viverra libero metus, sed convallis tortor pellentesque at. Maecenas finibus mollis imperdiet. Pellentesque a ante molestie, molestie massa sed, tristique metus. Sed non purus id lorem laoreet auctor. Etiam accumsan vel sem et placerat. Nam volutpat mollis turpis sit amet sollicitudin. Aenean placerat dignissim massa sit amet fermentum.</p>
+								</li>
+								<li>
+									<h5>2.1.1.2</h5>
+									<p>Suspendisse potenti. Vestibulum odio augue, posuere ut mauris vel, porttitor cursus massa. Pellentesque ac pretium eros. Morbi non lacus sit amet libero dignissim finibus et sed arcu. Ut sit amet elit neque. Mauris cursus malesuada neque ac imperdiet. Curabitur quis tristique nibh. Donec pharetra tellus eu euismod volutpat. Mauris sollicitudin, felis tempus pretium tempor, dolor ex suscipit lorem, et vehicula orci sem non eros. Etiam diam nisi, dignissim ac diam sit amet, consequat dignissim mauris. Nulla facilisi. Sed rhoncus ante est, eu mollis eros posuere ac. Etiam ut condimentum felis, sed ultrices turpis.</p>
+								</li>
+							</ol>
+						</li>
+					</ol>
+				</li>
+			</ol>
+		</li>
+		<li id="li-kapitel-3">
+			<h2>3</h2>
+			<p>Nunc at tincidunt elit. Quisque et massa convallis, fringilla nunc porta, molestie nulla. Nunc accumsan molestie elit sit amet sagittis. Integer aliquet velit id dui sagittis, blandit ultricies lacus vehicula. Morbi viverra commodo tincidunt. Integer vitae odio metus. Suspendisse vestibulum laoreet molestie. Etiam aliquet, dui non finibus mollis, metus augue elementum turpis, a tincidunt quam augue a ex. Pellentesque placerat convallis mauris eget congue.</p>
+		</li>
+	</ol>
+
+</body>
+</html>
+
