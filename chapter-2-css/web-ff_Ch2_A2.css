@@ -1,0 +1,13 @@
+h1 {
+	color: red;
+}
+p.odd {
+	background-color: gray;
+}
+p#borderthingy {
+	border: 1px solid black;
+}
+li > ul {
+	font-size: .8em;
+	color: blue;
+}
