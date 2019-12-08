@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>form und input tags</title>
+	<style type="text/css">
+		* {
+			font-family: sans-serif;
+		}
+		table {
+			border-collapse: collapse;
+		}
+		th, td {
+			padding: .5em;
+			border: 1px solid black;
+			font-size: 1rem;
+		}
+	</style>
+	<script type="text/javascript">
+		function onReset() {
+			return confirm("Daten zurücksetzen?");
+		}
+		function onSubmit() {
+			return confirm("Daten absenden?");
+		}
+	</script>
+</head>
+<body>
+
+	<form name="form1" enctype="multipart/form-data" method="POST" action="" onsubmit="return onSubmit()" onreset="return onReset()">
+		<table>
+			<tr>
+				<th>Input-Type</th>
+				<th>Element</th>
+			</tr>
+			<tr>
+				<td>Buttons</td>
+				<td>
+					<input type="button" name="knopf" value="DoDoDo">
+				</td>
+			</tr>
+			<tr>
+				<td>Checkboxen</td>
+				<td>
+					<label><input type="checkbox" name="checkTest" value="No1" checked>No1</label>
+					<label><input type="checkbox" name="checkTest" value="No2">No2</label>
+					<label><input type="checkbox" name="checkTest" value="No3">No3</label>
+				</td>
+			</tr>
+			<tr>
+				<td>File-Uploads</td>
+				<td>
+					<input type="file" name="datei[]" size="" accept="text/*" multiple>
+				</td>
+			</tr>
+			<tr>
+				<td>Hidden-Feld</td>
+				<td>
+					<input type="hidden" name="UserBrowser" id="hiddenField">
+				</td>
+			</tr>
+			<tr>
+				<td>Passwort-Feld</td>
+				<td>
+					<input type="password" name="password" maxlength="30">
+				</td>
+			</tr>
+			<tr>
+				<td>Radiobuttons</td>
+				<td>
+					<label><input type="radio" name="YesOrNo" value="yes">Yes</label>
+					<label><input type="radio" name="YesOrNo" value="no" checked>No</label>
+				</td>
+			</tr>
+			<tr>
+				<td>Selects</td>
+				<td>
+					<select name="selectList">
+						<option value="1">Eins</option>
+						<option value="2">Zwei</option>
+						<option value="3">Drei</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td>Listen</td>
+				<td>
+					<select name="selectList" size="5">
+						<option value="1">Eins</option>
+						<option value="2">Zwei</option>
+						<option value="3">Drei</option>
+						<option value="4">Vier</option>
+						<option value="5">F&uuml;nf</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td>Textvariante einzeilig</td>
+				<td>
+					<input type="text" name="textZeile" value="" placeholder="Textfeld" maxlength="12">
+				</td>
+			</tr>
+			<tr>
+				<td>Textvariante mehrzeilig</td>
+				<td>
+					<textarea name="textarea" rows="4" cols="30" maxlength="80" placeholder="Textfeld, maximal 50 Zeichen"></textarea>
+				</td>
+			</tr>
+			<tr>
+				<td>Farbe</td>
+				<td>
+					<input type="color" name="farbe">
+				</td>
+			</tr>
+			<tr>
+				<td>Numberrange</td>
+				<td>
+					<input type="range" name="telefonnummer" id="telefonnummer" min="0200000000" max="0999999999" step="1" value="0712345678">
+					<output id="output" for="telefonnummer">0712345678</output>
+				</td>
+			</tr>
+			<tr>
+				<td>Resetbutton</td>
+				<td>
+					<input type="reset" name="resetButton" value="Reset">
+				</td>
+			</tr>
+			<tr>
+				<td>Submit</td>
+				<td>
+					<input type="submit" name="submitButton" value="Submit">
+				</td>
+			</tr>
+		</table>
+	</form>
+
+
+	<script type="text/javascript">
+		"use strict";
+		var txt = "";
+		txt += "appCodeName = " + window.navigator.appCodeName + "<br>";
+		txt += "appName = " + window.navigator.appName + "<br>";
+		txt += "appVersion = " + window.navigator.appVersion + "<br>";
+		txt += "cookieEnabled = " + window.navigator.cookieEnabled + "<br>";
+
+		document.getElementById("hiddenField").innerHTML = txt;
+
+
+		function ausgeben(ev) {
+			document.getElementById('output').value = '0' + ev.target.value;
+		}
+
+		document.getElementById("telefonnummer").addEventListener("input", ausgeben);
+
+
+	</script>
+
+</body>
+</html>

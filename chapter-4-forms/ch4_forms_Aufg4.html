@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Events und Eingabefelder</title>
+	<style type="text/css">
+		* {
+			font-family: sans-serif;
+		}
+		table {
+			border-collapse: collapse;
+		}
+		td, th {
+			padding: .5em;
+			border: 1px solid black;
+		}
+	</style>
+	<script type="text/javascript">
+		function verify(txt) {
+			//wenn keine nummer
+			if (isNaN(txt.value)) {
+				alert("Not a number.")
+				txt.value = "";
+			}
+		}
+
+		function verifyKeyPress(txt) {
+			//wenn groesser als zahl 0 (charcode 48) und kleiner als zahl 9 (charcode 57)
+			if (48 <= event.keyCode && event.keyCode <= 57) {
+				return true;
+			} else {
+				alert("Not a number.");
+				return false;
+			}
+		}
+
+	</script>
+</head>
+<body>
+
+	<form>
+		<p><em>onChange:</em> nach &Auml;nderung</p>
+		<p><em>onBlur:</em> nachdem das Element den Fokus verliert</p>
+		<p><em>onKeyPress:</em> wenn eine Taste gedr&uuml;ckt wird, gibt mit <code>event.keyCode</code> den Unicode zur&uuml;ck</p>
+		<table>
+			<tr>
+				<th>Art der Eventhandler</th>
+				<th>Eingabefeld</th>
+			</tr>
+			<tr>
+				<td>Textfeld mit onChange</td>
+				<td>
+					<input type="text" name="zahlenfeld" id="zahlOnChange" onchange="verify(this)">
+				</td>
+			</tr>
+			<tr>
+				<td>Textfeld mit onBlur</td>
+				<td>
+					<input type="text" name="zahlenfeld" id="zahlOnBlur" onblur="verify(this)">
+				</td>
+			</tr>
+			<tr>
+				<td>Textfeld mit onKeypress</td>
+				<td>
+					<input type="text" name="zahlenfeld" id="zahlOnKeypress" onkeypress="return verifyKeyPress(this)">
+				</td>
+			</tr>
+			<tr>
+				<td>Submit</td>
+				<td>
+					<input type="submit" name="submitbutton">
+				</td>
+			</tr>
+		
+		</table>
+
+	</form>
+
+</body>
+</html>

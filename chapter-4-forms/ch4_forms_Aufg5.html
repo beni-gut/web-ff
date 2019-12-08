@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Verifikation der Inhalte eines Formulars</title>
+
+	<style type="text/css">
+		* {
+			font-family: sans-serif;
+		}
+		table {
+			border-collapse: collapse;
+		}
+		td, th {
+			padding: .5em;
+			border: 1px solid black;
+		}
+		td:nth-child(3) {
+			border: 0;
+		}
+
+		.eingabe_zwingend {
+			background-color: lightblue;
+		}
+		.fehlerhaft {
+			background-color: red;
+		}
+
+	</style>
+	
+
+	<script type="text/javascript">
+		function initialize() {
+			// hinweis: hier wird isReq verwendet anstatt required, weil "required" sich auf die browsereigene Validierung bezieht.
+			document.myForm.Anrede[0].isReq = true;
+			document.myForm.Anrede[1].isReq = true;
+			document.myForm.Name.isReq = true;
+			document.myForm.Sprache.isReq = true;
+
+			// Iteration ueber alle Form Elemente. Klassenname per code setzen.
+			for (var i=0; i<document.myForm.length; i++)
+				if (document.myForm.elements[i].isReq) document.myForm.elements[i].className="eingabe_zwingend";
+		}
+
+		function onFormReset() {
+			var reset = confirm("Sollen alle Defaultwerte wieder hergestellt werden?");
+			return reset;
+		}
+
+		function onFormSubmit() {
+			var passed = true;
+			var check = false;
+			if (document.myForm.Anrede[0].isReq) {
+				if (!(document.myForm.Anrede[0].checked || document.myForm.Anrede[1].checked)) {
+					anrede.innerHTML = "Bitte Anrede ausw&auml;hlen";
+					document.myForm.Anrede[0].className="fehlerhaft";
+					document.myForm.Anrede[1].className="fehlerhaft";
+					passed = false;
+				} else {
+					anrede.innerHTML = "";
+					document.myForm.Anrede[0].className="eingabe_zwingend";
+					document.myForm.Anrede[1].className="eingabe_zwingend";
+				}
+			}
+			if (document.myForm.Name.isReq) {
+				if (document.myForm.Name.value.length < 3) {
+					surname.innerHTML = "Name muss mindestens 3 Buchstaben lang sein";
+					document.myForm.Name.className="fehlerhaft";
+					passed = false;
+				} else {
+					surname.innerHTML = "";
+					document.myForm.Name.className="eingabe_zwingend";
+				}
+			}
+			if ((document.myForm.Alter.value != "") && isNaN(document.myForm.Alter.value)) {
+				alter.innerHTML = "Geben Sie eine Zahl ein";
+				document.myForm.Alter.className="fehlerhaft";
+				passed = false;
+				} else {
+				alter.innerHTML = "";
+				document.myForm.Alter.className="";
+			}
+			if (document.myForm.Sprache.isReq) {
+				for (var i=0; i<document.myForm.Sprache.length; i++) check = check || document.myForm.Sprache[i].checked;
+				if (!check) {
+					sprache.innerHTML = "Mindestens 1 Sprache ausw&auml;hlen";
+					for (var k=0; k<document.myForm.Sprache.length; k++) document.myForm.Sprache[k].className="fehlerhaft";
+					passed = false;
+					} else {
+					sprache.innerHTML = "";
+					for (var k=0; k<document.myForm.Sprache.length; k++) document.myForm.Sprache[k].className="eingabe_zwingend";
+				}
+			}
+			if (passed) return confirm("Sollen die Daten an den Server gesendet werden?");
+			else return false;
+		}
+	</script>
+
+</head>
+<body onLoad="initialize()">
+	<form name="myForm" onreset="return onFormReset()" onsubmit="return onFormSubmit()">
+		<h1>Formular mit Verifikation</h1>
+
+		<table>
+			<tr>
+				<td>Anrede</td>
+				<td>
+					<input type=radio name="Anrede" value=female>Frau</input>
+					<input type=radio name="Anrede" value=male>Herr</input>
+				</td>
+				<td id="anrede"></td>
+			</tr>
+
+			<tr>
+				<td>Name</td>
+				<td>
+					<input type=text name="Name" size=25 maxlength=25 placeholder="Mindestens 3 Zeichen">
+				</td>
+				<td id="surname"></td>
+			</tr>
+
+			<tr>
+				<td>Geburtsdatum</td>
+				<td>
+					<input type="date" name="Datum" value="" placeholder="YYYY-MM-DD">
+				</td>
+				<td id="gebdat"></td>
+			</tr>
+
+			<tr>
+				<td>Mail</td>
+				<td>
+					<input type="email" name="Email" size=30 maxlength=30 placeholder="name@example.com">
+				</td>
+				<td id="mail"></td>
+			</tr>
+
+			<tr>
+				<td>Telephone</td>
+				<td>
+					<input type="tel" name="Tel" size=15 maxlength=15 required>
+				</td>
+				<td id="phone"></td>
+			</tr>
+
+			<tr>
+				<td>Alter</td>
+				<td>
+					<input type=text name="Alter" size=3 maxlength=3>
+				</td>
+				<td id="alter"></td>
+			</tr>
+
+			<tr>
+				<td>Hobbies</td>
+				<td>
+					<select name="Hobbies" multiple size=3>
+						<option value=l1>Klettern</option>
+						<option value=l2>Skifahren</option>
+						<option value=l3>Musik</option>
+						<option value=l4>Fotografieren</option>
+						<option value=l5>Segeln</option>
+					</select>
+				</td>
+			</tr>
+
+			<tr>
+				<td>Checkboxen</td>
+				<td>
+					<input type=checkbox name="Sprache" value=deutsch>deutsch</input><br>
+					<input type=checkbox name="Sprache" value=franzoesisch>franz&ouml;sisch</input><br>
+					<input type=checkbox name="Sprache" value=englisch>englisch</input><br>
+					<input type=checkbox name="Sprache" value=italienisch>italienisch</input><br>
+					<input type=checkbox name="Sprache" value=spanisch>spanisch</input><br>
+				</td>
+				<td id="sprache"></td>
+			</tr>
+
+			<tr>
+				<td>Bemerkungen</td>
+				<td>
+					<textarea name=Bemerkungen rows=2 cols=25 maxlength=50 placeholder="Maximal 50 Zeichen"></textarea>
+				</td>
+			</tr>
+
+			<tr>
+				<td></td>
+				<td>
+					<input type=reset value="Reset">
+					<input type=submit value="Senden">
+				</td>
+			</tr>
+
+		</table>
+	</form>
+
+
+</body>
+</html>
