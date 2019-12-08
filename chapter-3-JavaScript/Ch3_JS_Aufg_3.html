@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Window Objekt</title>
+</head>
+<body>
+	<header>
+		<h1>Informationen über das Browserfenster</h1>
+	</header>
+	<div id="section"></div>
+
+	<br><br>
+
+	<button onclick="closeWindow()">Close Window</button>
+
+	<script type="text/javascript">
+		"use strict";
+
+		var w = window.outerWidth;
+		var h = window.outerHeight;
+		document.getElementById("section").innerHTML = "Width: " + w + "<br>Height: " + h;
+
+		function closeWindow() {
+			window.close();
+		}
+
+	</script>
+
+</body>
+</html>

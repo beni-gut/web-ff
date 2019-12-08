@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Navigator Objekt</title>
+</head>
+<body>
+	<h1>Informationen über den Browser</h1>
+
+	<div id="infoSection"></div>
+
+	<script type="text/javascript">
+		window.onload = start;
+
+		function start() {
+			var infos = document.getElementById("infoSection");
+
+			var txt = "";
+			txt += "<p>Browser CodeName: " + navigator.appCodeName + "</p>";
+			txt += "<p>Browser Name: " + navigator.appName + "</p>";
+			txt += "<p>Browser Version: " + navigator.appVersion + "</p>";
+			txt += "<p>Cookies Enabled: " + navigator.cookieEnabled + "</p>";
+			txt += "<br>"
+			txt += "<p>Browser Language: " + navigator.language + "</p>";
+			txt += "<p>Browser Online: " + navigator.onLine + "</p>";
+			txt += "<p>Platform: " + navigator.platform + "</p>";
+			txt += "<p>Product: " + navigator.product + "</p>";
+			txt += "<p>User-agent header: " + navigator.userAgent + "</p>";
+
+
+			infos.innerHTML = txt;
+		}
+	</script>
+
+</body>
+</html>
