@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Dynamische Positionierung</title>
+	<style type="text/css">
+		* {
+			font-family: sans-serif;
+		}
+		#banner {
+			position: absolute;
+			left: 0;
+			top: 0;
+			font-size: 1.5rem;
+		}
+	</style>
+</head>
+
+<body onload="centerIt()">
+
+	<p id="banner">Dies ist ein kurzer Text der zentriert wird.</p>
+
+	<script type="text/javascript">
+	"use strict";
+			var windowWidth = window.outerWidth;
+			var windowHeight = window.outerHeight;
+
+			var bannerObj = document.getElementById("banner");
+			var bannerObjOffsetWidth = bannerObj.style.left;
+			var bannerObjOffsetHeight = bannerObj.style.top;
+
+			var newLeft = (windowWidth - bannerObjOffsetWidth)/2;
+			var newTop  = (windowHeight - bannerObjOffsetHeight)/2;
+		function centerIt() {
+			// set new position using the CSS style properties left and top
+			bannerObj.style.left = newLeft;
+			bannerObj.style.top = newTop;
+		}
+	</script>
+
+</body>
+</html>

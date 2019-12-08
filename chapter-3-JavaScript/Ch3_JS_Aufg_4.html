@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+	<meta charset="utf-8">
+	<title>Dynamische Modifikationen von HTML</title>
+	<style type="text/css">
+		* {
+			font-family: sans-serif;
+		}
+		h1 {
+			font-size: 1.5rem;
+		}
+		div {
+			margin-left: 1rem;
+			margin-top: 1.5rem;
+		}
+	</style>
+</head>
+
+<body onload="reverseAll()">
+	<div>
+		<h1>Text entfernen und wieder anzeigen</h1>
+		<p id="hideEl1" onmouseover="changeMe(this)" onmouseout="revertMe(this)">Hier sehen wir einen Text in seiner nat&uuml;rlichen Umgebung. Doch <em>vorsicht</em>, kommt man ihm zu nahe, verschwindet er.</p>
+		<p id="hideEl2" onmouseover="changeMe(this)" onmouseout="revertMe(this)">Dies ginge auch mit einem weiteren Text.</p>
+	</div>
+
+	<div>
+		<h1>Text umkehren</h1>
+		<p id="revEl2" class="reverseString" onmouseover="reverseMe(this)" onmouseout="reverseMe(this)">Hier ist einer von zwei umkehrbaren Texten.</p>
+		<p id="revEl3" class="reverseString" onmouseover="reverseMe(this)" onmouseout="reverseMe(this)">Bei &Uuml;berfahren mit der Maus wird der Text korrekt angezeigt.</p>
+	</div>
+
+	<div>
+		<button type="button" onclick=reverseAll()>Alle Elemente mit der Klasse <b>reverseString</b> umkehren.</button>
+	</div>
+
+
+	<script type="text/javascript">
+		"use strict";
+
+		var originalText;
+		var placeHolderText = "Das ist der neue Text, damit das &lt;p&gt;-Element nicht zu klein wird."
+
+		//Original-Aufgabe
+		function changeMe(node) {
+			//if Anweisung wird benoetigt, damit Text nicht ueberschrieben wird durch sofortiges zweites Mouseover zb durch Hovering am Rand
+			if (placeHolderText != node.innerHTML) {
+				originalText = node.innerHTML;
+				node.innerHTML = placeHolderText;
+			}
+		}
+
+		function revertMe(node) {
+			node.innerHTML = originalText;
+		}
+
+		//Varianten-Aufgabe mit Array-Methoden split() in Buchstaben, reverse() kehrt um, join() fuegt wieder zusammen
+		function reverseString(str){
+			return str.split("").reverse().join("");
+		}
+
+		function reverseMe(node) {
+			let txt = node.innerHTML;
+			let reversedString = reverseString(txt);
+			node.innerHTML = reversedString;
+		}
+
+		function reverseAll(){
+			let reverseElement = document.getElementsByClassName("reverseString");
+			for (let i = 0; i < reverseElement.length; i++) {
+				reverseElement[i].innerHTML = reverseString(reverseElement[i].innerHTML);
+			}
+		}
+
+	</script>
+
+</body>
+</html>

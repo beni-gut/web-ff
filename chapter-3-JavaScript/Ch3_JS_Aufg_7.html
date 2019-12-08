@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Das Date Objekt</title>
+	<style type="text/css">
+		* {
+			font-family: sans-serif;
+			margin-left: 2rem;
+			margin-top: 2rem;
+		}
+		div {
+			border: 1px solid black;
+			width: 20%;
+		}
+	</style>
+</head>
+<body>
+	<div id="timerOutput"></div>
+
+	<script>
+	"use strict";
+
+	function setTime() {
+		var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+		var whereto = document.getElementById("timerOutput");
+		var d = new Date();
+		var dayName = days[d.getDay()];
+
+		var dateText = "Today is: " + dayName ;
+		dateText += "<br>";
+		dateText += "Current time is: "+  d.getHours() + "h " + d.getMinutes() + "min " + d.getSeconds() + "s";
+		dateText += "<br>";
+
+		whereto.innerHTML = dateText;
+	}
+
+	//erneuter Aufruf der Funktion
+	window.setInterval(setTime, 100)
+	</script>
+
+</body>
+</html>
